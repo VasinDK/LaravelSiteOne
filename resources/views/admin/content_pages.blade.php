@@ -10,7 +10,7 @@
 	                <th>Псевдоним</th>
 	                <th>Текст</th>
 	                <th>Дата создания</th>
-	                <th>Ссылка</th>
+	              {{--   <th>Ссылка</th> --}}
 	                <th>Удалить</th>
 	            </tr>
 	        </thead>
@@ -20,14 +20,14 @@
 	        			<td>{{ $page-> id }}</td>
 	        			<td>{!! Html::link(route('pagesEdit',['page'=>$page-> id]), $page-> name,['alt'=>$page->name]) !!} </td>
 	        			<td>{{ $page-> alias }}</td>
-	        			<td>{!! $page-> text !!}</td>
+	        			<td>{{ $page-> text }}</td>
 	        			<td>{{ $page-> created_at }}</td>
 	        			<td>
 	        			{{-- Fomt фасад так же из подключенного в начале Html --}}
 						{{-- указываем action. 'class' => 'form-horizontal это класс бутстрапа --}}
 						{!! Form::open(['url' => route('pagesEdit',['page'=> $page-> id]), 'class' => 'form-horizontal', 'metod' => 'POST'])  !!}
 						{!! Form::hidden('action', 'delete') !!} {{-- сформировали скрытое поле имя которого action, значение (value) - delete  --}}
-						{!! Form::button('Удалить', ['class'=> 'btn btn-danger'], 'type'=> 'submit') !!}
+						{!! Form::button('Удалить', ['class'=> 'btn btn-danger', 'type'=> 'submit']) !!}
 						{!! Form::close() !!}
 						</td>
 
@@ -35,7 +35,7 @@
 	        	@endforeach
 			</tbody>
 	    </table>
-
+	    {!! Html::link(route('pagesAdd'), 'Новая страница') !!}
 	@endif    
 
 </div>            	

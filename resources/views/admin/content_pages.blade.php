@@ -26,8 +26,8 @@
 	        			{{-- Fomt фасад так же из подключенного в начале Html --}}
 						{{-- указываем action. 'class' => 'form-horizontal это класс бутстрапа --}}
 						{!! Form::open(['url' => route('pagesEdit',['page'=> $page-> id]), 'class' => 'form-horizontal', 'metod' => 'POST'])  !!}
-						{!! Form::hidden('action', 'delete') !!} {{-- сформировали скрытое поле имя которого action, значение (value) - delete  --}}
-						{!! Form::button('Удалить', ['class'=> 'btn btn-danger', 'type'=> 'submit']) !!}
+							{{ method_field('DELETE') }}  {{-- формирует следующую строку: <input type='hidden' name='method value='delete'> --}}
+							{!! Form::button('Удалить', ['class'=> 'btn btn-danger', 'type'=> 'submit']) !!}
 						{!! Form::close() !!}
 						</td>
 

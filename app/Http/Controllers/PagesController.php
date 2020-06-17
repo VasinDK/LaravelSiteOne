@@ -13,7 +13,7 @@ class PagesController extends Controller
     public function execute () {
 
     	if(view()->exists('admin.pages')){
-    		$pages = \App\Page::all();  // вмсто: use App\Page , в самсм начале
+    		$pages = \App\Page::all();  // вмсто: use App\Page , в самом начале
 
     		$data = [
     			'title' => 'Страницы',

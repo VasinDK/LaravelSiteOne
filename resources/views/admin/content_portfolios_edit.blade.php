@@ -1,25 +1,18 @@
-{{-- форма редактирования страницы --}}
+{{-- форма редактирования портфолио --}}
 <div class="wrapper container-fluid">
-{!! Form::open(['url' => route('pagesEdit',array('page'=>$data['id'])),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+{!! Form::open(['url' => route('portfoliosEdit',array('portfolio'=>$data['id'])),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
     <div class="form-group">
     	{!! Form::hidden('id', $data['id']) !!}
 	     {!! Form::label('name', 'Название:',['class'=>'col-xs-2 control-label']) !!}
 	     <div class="col-xs-8">
-		 	{!! Form::text('name', $data['name'], ['class' => 'form-control','placeholder'=>'Введите название страницы']) !!}
+		 	{!! Form::text('name', $data['name'], ['class' => 'form-control','placeholder'=>'Введите название портфолио']) !!}
 		 </div>
     </div>
     
     <div class="form-group">
-	     {!! Form::label('alias', 'Псевдоним:',['class'=>'col-xs-2 control-label']) !!}
+	     {!! Form::label('filter', 'Фильтр:',['class'=>'col-xs-2 control-label']) !!}
 	     <div class="col-xs-8">
-		 	{!! Form::text('alias', $data['alias'], ['class' => 'form-control','placeholder'=>'Введите псевдоним страницы']) !!}
-		 </div>
-    </div>
-    
-    <div class="form-group">
-	     {!! Form::label('text', 'Текст:',['class'=>'col-xs-2 control-label']) !!}
-	     <div class="col-xs-8">
-		 	{!! Form::textarea('text', $data['text'], ['id'=>'editor','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
+		 	{!! Form::text('filter', $data['filter'], ['class' => 'form-control','placeholder'=>'Введите название фильтра']) !!}
 		 </div>
     </div>
     
@@ -47,9 +40,9 @@
     
 {!! Form::close() !!}
 
-{{-- подключение редактора к полю с 'alias' 'editor' --}}
+{{-- подключение редактора к полю с id 'editor' --}}
 
  <script>
-	CKEDITOR.replace( 'editor' );
+	CKEDITOR.replace( 'editor' );	
 </script>
 </div>

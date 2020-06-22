@@ -1,5 +1,5 @@
 <div class = "wrapper container-fluid">
-
+{{-- форма добавления страницы --}}
 	{!! Form::open(['url' => route('pagesAdd'), 'class' => 'form-horizontal' , 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
 	<div class = "form-group">
@@ -35,12 +35,13 @@
     
 	<div class="form-group">
 		<div class="col-xs-offset-2 col-xs-10">
-		{!! Form::button('Сохранить', ['class' => 'btn btn-primary','type'=>'submit']) !!}
+			{!! Form::button('Сохранить', ['class' => 'btn btn-primary','type'=>'submit']) !!}
+		</div>
 	</div>
-</div>
 
 	{!! Form::close() !!}
 
+{{-- подключение редактора к полю с 'alias' 'editor' --}}
 	<script>
 		CKEDITOR.replace('editor'); /*editor - передаваемое id поля в котором будет работать CKEDITOR */
 	</script>

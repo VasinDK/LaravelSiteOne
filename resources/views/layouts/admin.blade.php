@@ -19,7 +19,7 @@
 <header id="header_wrapper">
 	@yield('header') 
 	
-	
+{{-- вывод всех ошибок --}}	
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -30,6 +30,7 @@
     </div>
 @endif
 
+{{-- вывод статусов сессии --}}
 @if (session('status'))
     <div class="alert alert-success">
         {{ session('status') }}

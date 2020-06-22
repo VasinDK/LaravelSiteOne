@@ -1,5 +1,5 @@
 <div style="margin:0px 50px 0px 50px;">   
-
+{{-- форма вывода всех страниц в админке --}}
 	@if($pages)
 
 		<table class="table table-hover table-striped">
@@ -26,7 +26,7 @@
 	        			{{-- Fomt фасад так же из подключенного в начале Html --}}
 						{{-- указываем action. 'class' => 'form-horizontal это класс бутстрапа --}}
 						{!! Form::open(['url' => route('pagesEdit',['page'=> $page-> id]), 'class' => 'form-horizontal', 'metod' => 'POST'])  !!}
-							{{ method_field('DELETE') }}  {{-- формирует следующую строку: <input type='hidden' name='method value='delete'> --}}
+							{{ method_field('DELETE') }}  {{-- формирует следующую строку: <input type='hidden' name='_method value='delete'> --}}
 							{!! Form::button('Удалить', ['class'=> 'btn btn-danger', 'type'=> 'submit']) !!}
 						{!! Form::close() !!}
 						</td>
@@ -35,6 +35,7 @@
 	        	@endforeach
 			</tbody>
 	    </table>
+	    {{-- добавление новой страницы --}}
 	    {!! Html::link(route('pagesAdd'), 'Новая страница') !!}
 	@endif    
 

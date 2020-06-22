@@ -1,5 +1,5 @@
 @if(isset($pages) && is_object($pages)) <!-- Проверяем перед вывдодом переменную $pages -->
-
+{{-- вывод страниц --}}
 @foreach($pages as $k => $page)
   @if($k%2 == 0) <!-- целочисленное деление на 2. Для того чтобы вычснить четнось/нечетность -->
 
@@ -54,7 +54,7 @@
 
 @endif
 
-
+{{-- вывод услуг --}}
 @if(isset($services) && is_object($services))
   <!--Service-->
   <section  id="service">
@@ -87,14 +87,9 @@
 <!--Service-->
 @endif
 
-
-
-
 @if(isset($portfolios) && is_object($portfolios))
   
-
-
-
+{{-- вывод портфолио --}}
 
 <!-- Portfolio -->
 <section id="Portfolio" class="content"> 
@@ -113,6 +108,7 @@
   
   <div class="portfolio-top"></div>
 
+{{-- вывод тегов фильтра  --}}
      <!-- Portfolio Filters -->
   <div class="portfolio"> 
   @if(isset($tegs))
@@ -169,7 +165,7 @@
 </section>
 <!--/Portfolio --> 
 @endif
-
+{{-- вывод людей команды --}}
 @if(isset($peoples) && is_object($peoples))
   <section class="page_section team" id="team"><!--main-section team-start-->
     <div class="container">

@@ -1,6 +1,7 @@
 <section>
   <div class="inner_wrapper">
     <div class="container">
+      {{-- вывод страницы. Заголовок, текст, ссылку назад --}}
       <h2>{{ $page-> name }}</h2>
       <div class="inner_section">
     <div class="row">

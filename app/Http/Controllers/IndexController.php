@@ -17,6 +17,22 @@ class IndexController extends Controller
     //
     public function execute(Request $request){
 
+        /*
+        $data - данные передаваемые запросом
+        $resault - результат отправки сообщения
+        $pages - массив страниц
+        $services - массив услуг
+        $portfolios - массив портфолио
+        $peoples - массив людей (команда)
+        $tegs - массив тегов для портфолио
+        $menu - массив меню
+        $item - элемент меню. Его тайтл и алиас для заполнения $menu
+        'Name' - поле имя заполняемой формы
+        'Email' - поле емаил заполняемой формы
+        'Text' - поле текст заполняемой формы
+        */
+
+        // отпревка сообщения из футера главной страницы
     	if($request-> isMethod('post')){
 
     		$messages = [
@@ -25,6 +41,7 @@ class IndexController extends Controller
 
     		];
 
+            // валидация
     		$this-> validate($request, [
     			'Name' => 'required|max:255',
     			'Email' => 'required|email',
@@ -33,6 +50,7 @@ class IndexController extends Controller
 
     		$data = $request->all();
 
+            // отправка сообщения
     		$resault = Mail::send('site.email',['data' =>$data], function($message) use ($data) {
     			$mail_admin = env('MAIL_ADMIN'); // ? от какого ящика отправлять. Можно указать переменную из файла .env (там мы сами ее прописали)
     			$message-> from($data['Email'], $data['Name']); // адрес отправителя и имя
@@ -44,21 +62,22 @@ class IndexController extends Controller
     		}
     	}
 
-
-    	$pages = Page::all();    // выбераем все записи страниц
+        // собираем все страницы, услуги, портфолио, люди, фильтры
+    	$pages = Page::all();    
     	$services = Service::where('id','<',20)->get();  // или можно выбрать в соответствии с условием
     	$portfolios = Portfolio::get(['name', 'filter', 'images']); //или можно выбрать конкретные поля из модели
     	$peoples = People::take(3)->get(); // или можно выбрать первых трех. 
     	// и переопределили в моделе People таблицу, с которой работает данная модель.
     	$tegs = DB::table('portfolios')->distinct()->lists('filter'); //distinct - выберает только уникальные значения
     	
+        // создаем массив меню
     	$menu = array();
     	foreach($pages as $page){
     		$item = ['title'=>$page-> name, 'alias'=>$page-> alias];
     		array_push($menu, $item);
     	}
 
-    	// дополнительняем
+    	// дополнительняем меню
     	$item = ['title'=>'Services', 'alias'=>'service'];
     	array_push($menu, $item);
     	$item = ['title'=>'Portfolio', 'alias'=>'Portfolio'];
@@ -68,7 +87,7 @@ class IndexController extends Controller
     	$item = ['title'=>'Contact', 'alias'=>'contact'];
     	array_push($menu, $item);
     	
-    	   // возвращаем въю и передаем параметры ему
+    	   // возвращаем вид и передаем ему параметры
     	return view('site.index',[
     		'menu'=>$menu,
     		'pages'=>$pages,

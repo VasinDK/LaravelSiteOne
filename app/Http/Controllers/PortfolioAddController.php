@@ -56,7 +56,7 @@ class PortfolioAddController extends Controller
 	    		return redirect('admin')-> with('status', 'страница добавленна'); 
 	    	}	
 
-	    }
+	    } 
         // инициализация страницы добавления
     	if(view()->exists('admin.portfolios_add')){
     		

@@ -45,6 +45,7 @@ class PortfolioEditController extends Controller
         if($request-> isMethod('post')){
             $input = $request -> except('_token');
 
+            // сообщение для валидации
             $message = [
                 'requiered' => 'Поле :attribute обязательно для заполнения',
                 'max' => 'Поле :attribute имеет максимальную длинну 255 символов',
@@ -60,7 +61,7 @@ class PortfolioEditController extends Controller
             if($validator -> fails()){
                 return redirect()
                     ->route('portfoliosEdit',['portfolio' => $input['id']])
-                    ->withErrors($valodator);
+                    ->withErrors($validator);
             };
               
             // проверка наличия обновления картинки. В отсутствии используется старая картинка.  

@@ -11,7 +11,7 @@ use Validator;
 
 class ServiceEditController extends Controller
 {
-    //Изменение услуги
+    //Изменение услуги. 
     public function execute(Service $service, Request $request){
 
         // удаление элемента. С записью статуса в сессию
